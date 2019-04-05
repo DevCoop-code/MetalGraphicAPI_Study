@@ -21,6 +21,7 @@ struct VertexOut{
 
 struct Uniforms{
     float4x4 modelMatrix;
+    float4x4 projectionMatrix;
 };
 
 vertex VertexOut basic_vertex(
@@ -28,12 +29,13 @@ vertex VertexOut basic_vertex(
                               const device Uniforms& uniforms [[ buffer(1) ]],
                               unsigned int vid [[ vertex_id ]]){
     float4x4 mv_Matrix = uniforms.modelMatrix;
+    float4x4 proj_Matrix = uniforms.projectionMatrix;
     
     VertexIn VertexIn = vertex_array[vid];
     
     VertexOut VertexOut;
     //Apply the model transformation to a vertex, you simply multiply the vertex position by the model matrix
-    VertexOut.position = mv_Matrix * float4(VertexIn.position, 1);
+    VertexOut.position = proj_Matrix * mv_Matrix * float4(VertexIn.position, 1);
     VertexOut.color = VertexIn.color;
     
     return VertexOut;
