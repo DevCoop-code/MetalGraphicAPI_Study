@@ -24,3 +24,6 @@ SEVERAL **MTLRenderPipelineState**(define various pipeline states), **MTLBuffer*
 
 ## Rendering Pipeline
 ![renderingPipeline](./images/RenderingPipeline.png)
+In Metal Programming, Just concerned about **vertexProcessing** and **fragment Processing**
+
+### 1. Vertex Fetch
