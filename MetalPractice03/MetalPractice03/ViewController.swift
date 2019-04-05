@@ -13,7 +13,7 @@ import Metal
 
 class ViewController: UIViewController {
 
-    var objectToDraw: Triangle!
+    var objectToDraw: Cube!
     
     var device: MTLDevice!
     var metalLayer: CAMetalLayer!
@@ -33,7 +33,12 @@ class ViewController: UIViewController {
         metalLayer.frame = view.layer.frame
         view.layer.addSublayer(metalLayer)
         
-        objectToDraw = Triangle(device: device)
+        objectToDraw = Cube(device: device)
+        objectToDraw.positionX = -0.25
+        objectToDraw.positionY = 0.25
+        objectToDraw.positionZ = -0.25
+        objectToDraw.rotationZ = Matrix4.degrees(toRad: 45)
+        objectToDraw.scale = 0.5
         
         //MTLLibrary
         let defaultLibrary = device.makeDefaultLibrary()!
