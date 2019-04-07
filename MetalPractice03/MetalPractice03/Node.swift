@@ -39,7 +39,7 @@ class Node{
         vertexCount = vertices.count
     }
     
-    func render(commandQueue: MTLCommandQueue, pipelineState: MTLRenderPipelineState, drawable: CAMetalDrawable, projectionMatrix: Matrix4, clearColor: MTLClearColor?){
+    func render(commandQueue: MTLCommandQueue, pipelineState: MTLRenderPipelineState, drawable: CAMetalDrawable, parentModelViewMatrix: Matrix4 ,projectionMatrix: Matrix4, clearColor: MTLClearColor?){
         
         let renderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor.colorAttachments[0].texture = drawable.texture
@@ -55,6 +55,9 @@ class Node{
         
         // Get Transform Matrix
         let nodeModelMatrix = self.modelMatrix()
+        
+        nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
+        
         // Ask the device to create a buffer with shared CPU/GPU memory.
         let uniformBuffer = device.makeBuffer(length: MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2, options: [])
         // Get a raw pointer from buffer
