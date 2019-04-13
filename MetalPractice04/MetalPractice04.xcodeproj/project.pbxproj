@@ -19,6 +19,7 @@
 		7809497C2259B60700E7353D /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809497B2259B60700E7353D /* Vertex.swift */; };
 		7809497E2259B65400E7353D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809497D2259B65400E7353D /* Node.swift */; };
 		780949802259B71E00E7353D /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809497F2259B71E00E7353D /* Cube.swift */; };
+		780949822259BDB400E7353D /* BufferProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780949812259BDB400E7353D /* BufferProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		7809497B2259B60700E7353D /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		7809497D2259B65400E7353D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		7809497F2259B71E00E7353D /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+		780949812259BDB400E7353D /* BufferProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				7809497B2259B60700E7353D /* Vertex.swift */,
 				7809497D2259B65400E7353D /* Node.swift */,
 				7809497F2259B71E00E7353D /* Cube.swift */,
+				780949812259BDB400E7353D /* BufferProvider.swift */,
 			);
 			path = MetalPractice04;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				780949782259A41700E7353D /* Shaders.metal in Sources */,
 				780949562259872A00E7353D /* MetalViewController.swift in Sources */,
+				780949822259BDB400E7353D /* BufferProvider.swift in Sources */,
 				7809497622599E4600E7353D /* Matrix4.m in Sources */,
 				7809497A2259B5B100E7353D /* MySceneViewController.swift in Sources */,
 				780949802259B71E00E7353D /* Cube.swift in Sources */,

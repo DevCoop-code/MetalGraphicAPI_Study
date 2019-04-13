@@ -6,6 +6,8 @@
 //  Copyright © 2019 HanGyoJeong. All rights reserved.
 //
 
+// https://www.raywenderlich.com/719-metal-tutorial-with-swift-3-part-3-adding-texture
+
 import UIKit
 import Metal
 
