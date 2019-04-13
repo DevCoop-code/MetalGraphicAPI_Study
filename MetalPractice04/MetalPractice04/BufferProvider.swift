@@ -17,8 +17,13 @@ class BufferProvider : NSObject{
     // Index of the next available buffer
     private var availableBufferIndex: Int = 0
     
+    var availableResourcesSemaphore: DispatchSemaphore
+    
     //Create Number of Buffers
     init(device: MTLDevice, inflightBuffersCount: Int, sizeOfUniformsBuffer: Int) {
+        
+        availableResourcesSemaphore = DispatchSemaphore(value: inflightBuffersCount)
+        
         self.inflightBuffersCount = inflightBuffersCount
         uniformsBuffers = [MTLBuffer]()
         
@@ -47,5 +52,11 @@ class BufferProvider : NSObject{
         }
         
         return buffer
+    }
+    
+    deinit {
+        for _ in 0...self.inflightBuffersCount{
+            self.availableResourcesSemaphore.signal()
+        }
     }
 }

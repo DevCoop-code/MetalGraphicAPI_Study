@@ -44,17 +44,15 @@ class Node {
     var scale: Float     = 1.0
     
     init(name: String, vertices: Array<Vertex>, device: MTLDevice){
-        // 1
+        
         var vertexData = Array<Float>()
         for vertex in vertices{
             vertexData += vertex.floatBuffer()
         }
         
-        // 2
         let dataSize = vertexData.count * MemoryLayout.size(ofValue: vertexData[0])
         vertexBuffer = device.makeBuffer(bytes: vertexData, length: dataSize, options: [])!
         
-        // 3
         self.name = name
         self.device = device
         vertexCount = vertices.count
@@ -66,6 +64,9 @@ class Node {
     
     func render(commandQueue: MTLCommandQueue, pipelineState: MTLRenderPipelineState, drawable: CAMetalDrawable, parentModelViewMatrix: Matrix4, projectionMatrix: Matrix4, clearColor: MTLClearColor?) {
         
+        //Make CPU wait in case bufferProvider.availableResourcesSemaphore has no free resources.
+        bufferProvider.availableResourcesSemaphore.wait(timeout: DispatchTime.distantFuture)
+        
         let renderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor.colorAttachments[0].texture = drawable.texture
         renderPassDescriptor.colorAttachments[0].loadAction = .clear
@@ -73,6 +74,13 @@ class Node {
         renderPassDescriptor.colorAttachments[0].storeAction = .store
         
         let commandBuffer = commandQueue.makeCommandBuffer()
+        //Signal the semaphore when the resource becomes available
+        //https://developer.apple.com/documentation/metal/mtlcommandbuffer/1442997-addcompletedhandler?language=objc
+        //https://developer.apple.com/documentation/dispatch/dispatchsemaphore/1452919-signal
+        //When the GPU finishes rendering, it executes a completion handler to signal the semaphore and bumps its count back up again
+        commandBuffer?.addCompletedHandler{
+            (_) in self.bufferProvider.availableResourcesSemaphore.signal()
+        }
         
         let renderEncoder = commandBuffer!.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
         //For now cull mode is used instead of depth buffer
