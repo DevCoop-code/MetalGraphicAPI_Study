@@ -36,4 +36,29 @@ Analysis the MSL Function
 ![MTLCreateSystemDefaultDevice](./ImageWarehouse/FindDefaultGPU.png)
 <br>
 
-## Initialize Metal Object
+## To get information about Metal libraries and the functions
+- MTLLibrary: A collection of Metal Shader Functions
+  - MTLLibrary object contains Metal Shading language source code
+- MTLFunction: An object representing a public shader function in the library
+  - MTLFunction object is considered a specialized function
+
+## Prepare a Metal Pipeline
+To execute MSL function, you convert the function into executable code by creating a pipeline.<br>
+A Pipeline specifies the steps that the GPU performs to complete a specific task.<br>
+In Metal, a pipeline is represented by a <b>Pipeline State Object(PSO)</b>
+
+## Create a Command Queue
+To send work to the GPU, need a command queue. Metal uses command queues to schedule commands
+
+## Create Data Buffers and Load Data
+After initializing the basic Metal objects, need to load data for the GPU to execute.<br>
+A GPU can have its own dedicated memory, or it can share memory with the operating system.<br>
+Metal abstracts this memory management using resource objects.(<b>MTLResource</b>)<br>
+The resource are may be <b>MTLBuffer</b> objects, which are allocations of memory without a predefined format.
+
+## Create a Command Buffer
+Ask the command queue to create a command buffer
+
+## Create a Command Encoder
+To write commands into a command buffer, use a command encoder for the specific kind of commands you want<br>
+![MTLCommands](./ImageWarehouse/Commands.png)
