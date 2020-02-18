@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Metal/Metal.h>
+#import "MetalAdder.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        id<MTLDevice> device = MTLCreateSystemDefaultDevice();
+        
+        // Create the custom object used to encapsulate the Metal code
+        // Initializes objects to communicate with the GPU
     }
     return 0;
 }
