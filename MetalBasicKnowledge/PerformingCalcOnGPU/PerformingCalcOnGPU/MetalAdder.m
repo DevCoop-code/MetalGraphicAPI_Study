@@ -45,7 +45,7 @@ const unsigned int bufferSize = arrayLength * sizeof(float);
         
         //Load the shader files with a .metal file extension in the project
         id<MTLLibrary> defaultLibrary = [_mDevice newDefaultLibrary];
-        if(defaultLibrary == nil)
+        if(nil == defaultLibrary)
         {
             NSLog(@"Failed to find the default library");
             return nil;
@@ -53,7 +53,7 @@ const unsigned int bufferSize = arrayLength * sizeof(float);
         
         //Create a compute pipeline state object
         id<MTLFunction> addFunction = [defaultLibrary newFunctionWithName:@"add_arrays"];
-        if(addFunction == nil)
+        if(nil == addFunction)
         {
             NSLog(@"Failed to find the adder function");
             return nil;
