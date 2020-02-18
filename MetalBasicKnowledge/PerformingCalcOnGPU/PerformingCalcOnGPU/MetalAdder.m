@@ -88,6 +88,57 @@ const unsigned int bufferSize = arrayLength * sizeof(float);
     [self generateRandomFloatData:_mBufferB];
 }
 
+- (void) sendComputeCommand
+{
+    //Create a command buffer to hold commands
+    id<MTLCommandBuffer> commandBuffer = [_mCommandQueue commandBuffer];
+    assert(commandBuffer != nil);
+    
+    //Start a compute pass
+    id<MTLComputeCommandEncoder> computeEncoder = [commandBuffer computeCommandEncoder];
+    assert(computeEncoder != nil);
+    
+    [self encodeAddCommand:computeEncoder];
+    
+    //End the compute pass
+    [computeEncoder endEncoding];
+    
+    //Execute the command
+    [commandBuffer commit];
+    
+    [commandBuffer waitUntilCompleted];
+    
+    [self verifyResults];
+}
+
+- (void)encodeAddCommand:(id<MTLComputeCommandEncoder>) computeEncoder
+{
+    // Encode the pipeline state object and its parameters
+    [computeEncoder setComputePipelineState:_mAddFunctionPSO];
+    [computeEncoder setBuffer:_mBufferA offset:0 atIndex:0];
+    [computeEncoder setBuffer:_mBufferB offset:0 atIndex:1];
+    [computeEncoder setBuffer:_mBufferResult offset:0 atIndex:2];
+    
+    //Creates a size for an object using the specified dimensions
+    /*
+     param1: width
+     param2: height
+     param3: depth
+     */
+    MTLSize gridSize = MTLSizeMake(arrayLength, 1, 1);
+    
+    //Calculate a threadgroup size
+    NSUInteger threadGroupSize = _mAddFunctionPSO.maxTotalThreadsPerThreadgroup;
+    if(threadGroupSize > arrayLength)
+    {
+        threadGroupSize = arrayLength;
+    }
+    MTLSize threadgroupSize = MTLSizeMake(threadGroupSize, 1, 1);
+    
+    //Encode the compute command
+    [computeEncoder dispatchThreads:gridSize threadsPerThreadgroup:threadgroupSize];
+}
+
 - (void) generateRandomFloatData: (id<MTLBuffer>)buffer
 {
     float* dataPtr = buffer.contents;
@@ -95,6 +146,18 @@ const unsigned int bufferSize = arrayLength * sizeof(float);
     for(unsigned long index = 0; index < arrayLength; index++)
     {
         dataPtr[index] = (float)rand()/(float)(RAND_MAX);
+    }
+}
+
+- (void) verifyResults
+{
+    float* a = _mBufferA.contents;
+    float* b = _mBufferB.contents;
+    float* result = _mBufferResult.contents;
+    
+    for(unsigned long index = 0; index < arrayLength; index++)
+    {
+        assert(result[index] == (a[index] + b[index]));
     }
 }
 @end

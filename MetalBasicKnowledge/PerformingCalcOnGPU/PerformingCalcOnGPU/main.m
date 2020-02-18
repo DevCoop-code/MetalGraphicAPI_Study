@@ -20,6 +20,11 @@ int main(int argc, const char * argv[]) {
         
         // Create buffers to hold data
         [addr prepareData];
+        
+        // Send a command to the GPU to perform the calculation
+        [addr sendComputeCommand];
+        
+        NSLog(@"Execution finished");
     }
     return 0;
 }
