@@ -16,6 +16,9 @@ int main(int argc, const char * argv[]) {
         
         // Create the custom object used to encapsulate the Metal code
         // Initializes objects to communicate with the GPU
+        MetalAdder* addr = [[MetalAdder alloc] initWithDevice:device];
+        
+        
     }
     return 0;
 }
