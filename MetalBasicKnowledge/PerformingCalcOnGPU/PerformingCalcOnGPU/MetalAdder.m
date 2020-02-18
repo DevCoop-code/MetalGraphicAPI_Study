@@ -76,4 +76,25 @@ const unsigned int bufferSize = arrayLength * sizeof(float);
     }
     return self;
 }
+
+- (void) prepareData
+{
+    // Allocate three buffers to hold our initial data and the result
+    _mBufferA = [_mDevice newBufferWithLength:bufferSize options:MTLResourceStorageModeShared];
+    _mBufferB = [_mDevice newBufferWithLength:bufferSize options:MTLResourceStorageModeShared];
+    _mBufferResult = [_mDevice newBufferWithLength:bufferSize options:MTLResourceStorageModeShared];
+    
+    [self generateRandomFloatData:_mBufferA];
+    [self generateRandomFloatData:_mBufferB];
+}
+
+- (void) generateRandomFloatData: (id<MTLBuffer>)buffer
+{
+    float* dataPtr = buffer.contents;
+    
+    for(unsigned long index = 0; index < arrayLength; index++)
+    {
+        dataPtr[index] = (float)rand()/(float)(RAND_MAX);
+    }
+}
 @end

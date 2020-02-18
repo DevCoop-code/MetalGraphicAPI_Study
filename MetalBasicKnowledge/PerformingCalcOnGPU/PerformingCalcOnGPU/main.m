@@ -18,7 +18,8 @@ int main(int argc, const char * argv[]) {
         // Initializes objects to communicate with the GPU
         MetalAdder* addr = [[MetalAdder alloc] initWithDevice:device];
         
-        
+        // Create buffers to hold data
+        [addr prepareData];
     }
     return 0;
 }
