@@ -62,3 +62,6 @@ Ask the command queue to create a command buffer
 ## Create a Command Encoder
 To write commands into a command buffer, use a command encoder for the specific kind of commands you want<br>
 ![MTLCommands](./ImageWarehouse/Commands.png)
+
+## Reference
+https://developer.apple.com/documentation/metal/basic_tasks_and_concepts/performing_calculations_on_a_gpu?preferredLanguage=occ
