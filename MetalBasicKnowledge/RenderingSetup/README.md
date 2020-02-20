@@ -27,7 +27,7 @@ A render pass descriptor describes the set of render targets, and how they shoul
 
 ## Create a Render Pass
 
-## Present a Drawable tto the Screen
+## Present a Drawable to the Screen
 Drawing to a texture doesn't automatically display the new contents onscreen.<br>
 In Metal, textures that can be displayed onscreen are managed by drawable objects
 <br>
