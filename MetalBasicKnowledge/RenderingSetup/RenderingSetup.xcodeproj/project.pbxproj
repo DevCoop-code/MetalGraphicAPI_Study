@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		78B8022E23FD928C0041E507 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8022D23FD928C0041E507 /* AppDelegate.m */; };
-		78B8023123FD928C0041E507 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8023023FD928C0041E507 /* ViewController.m */; };
+		78B8023123FD928C0041E507 /* AAPLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8023023FD928C0041E507 /* AAPLViewController.m */; };
 		78B8023323FD92900041E507 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B8023223FD92900041E507 /* Assets.xcassets */; };
 		78B8023623FD92900041E507 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B8023423FD92900041E507 /* Main.storyboard */; };
 		78B8023923FD92900041E507 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8023823FD92900041E507 /* main.m */; };
 		78B8024423FD92900041E507 /* RenderingSetupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B8024323FD92900041E507 /* RenderingSetupTests.m */; };
+		78FEF72223FEE64F007EF740 /* AAPLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FEF72123FEE64F007EF740 /* AAPLRenderer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +30,8 @@
 		78B8022923FD928C0041E507 /* RenderingSetup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenderingSetup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B8022C23FD928C0041E507 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		78B8022D23FD928C0041E507 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		78B8022F23FD928C0041E507 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		78B8023023FD928C0041E507 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		78B8022F23FD928C0041E507 /* AAPLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLViewController.h; sourceTree = "<group>"; };
+		78B8023023FD928C0041E507 /* AAPLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAPLViewController.m; sourceTree = "<group>"; };
 		78B8023223FD92900041E507 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78B8023523FD92900041E507 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78B8023723FD92900041E507 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +40,8 @@
 		78B8023F23FD92900041E507 /* RenderingSetupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenderingSetupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B8024323FD92900041E507 /* RenderingSetupTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RenderingSetupTests.m; sourceTree = "<group>"; };
 		78B8024523FD92900041E507 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78FEF72023FEE64F007EF740 /* AAPLRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLRenderer.h; sourceTree = "<group>"; };
+		78FEF72123FEE64F007EF740 /* AAPLRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAPLRenderer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +83,11 @@
 		78B8022B23FD928C0041E507 /* RenderingSetup */ = {
 			isa = PBXGroup;
 			children = (
+				78FEF71F23FEE627007EF740 /* Renderer */,
 				78B8022C23FD928C0041E507 /* AppDelegate.h */,
 				78B8022D23FD928C0041E507 /* AppDelegate.m */,
-				78B8022F23FD928C0041E507 /* ViewController.h */,
-				78B8023023FD928C0041E507 /* ViewController.m */,
+				78B8022F23FD928C0041E507 /* AAPLViewController.h */,
+				78B8023023FD928C0041E507 /* AAPLViewController.m */,
 				78B8023223FD92900041E507 /* Assets.xcassets */,
 				78B8023423FD92900041E507 /* Main.storyboard */,
 				78B8023723FD92900041E507 /* Info.plist */,
@@ -100,6 +104,15 @@
 				78B8024523FD92900041E507 /* Info.plist */,
 			);
 			path = RenderingSetupTests;
+			sourceTree = "<group>";
+		};
+		78FEF71F23FEE627007EF740 /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				78FEF72023FEE64F007EF740 /* AAPLRenderer.h */,
+				78FEF72123FEE64F007EF740 /* AAPLRenderer.m */,
+			);
+			path = Renderer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,8 +214,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B8023123FD928C0041E507 /* ViewController.m in Sources */,
+				78B8023123FD928C0041E507 /* AAPLViewController.m in Sources */,
 				78B8023923FD92900041E507 /* main.m in Sources */,
+				78FEF72223FEE64F007EF740 /* AAPLRenderer.m in Sources */,
 				78B8022E23FD928C0041E507 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
