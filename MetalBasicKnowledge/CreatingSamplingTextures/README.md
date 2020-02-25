@@ -15,4 +15,10 @@ The pixel format describes the layout of pixel data in the texture.<br>
 For Example *MTLPixelFormatBGRA8Unorn* pixel format, which uses 32 bits per pixel, arranged into 8 bits per component, in blue, green, red, and alpha order 
 ![MTLPixelFormatBGRA8Unorn](./ImageWarehouse/MTLPixelFormatBGRA8Unorn.png)<br><br>
 Before you can populate a Metal texture, you must format the image data into the texture's pixel format.<br>
-For Example TGA files can provide pixel data either in a 32-bit-per-pixel format or a 24-bit-per-pixel format.
+For Example TGA files can provide pixel data either in a 32-bit-per-pixel format or a 24-bit-per-pixel format.<br><br>
+Metal will not understand an image with 24-bit BGR format so the pixels are converted to a 32-bit BGRA format. so <b>To convert a 24-bit-per-pixel BGR image, copy the red, green and blue channels and set the alpha channel to 255, indicating a fully opaque pixel</b>
+
+## Create a Texture from a Texture Descriptor
+Use a <b>MTLTextureDescriptor</b> object to configure properties like texture and pixel format<br>
+Call the <b>newTextureWithDescriptor:</b> method to create a texture
+![MTLTextureDescriptor](./ImageWarehouse/MTLTextureDescriptor.png)<br>
