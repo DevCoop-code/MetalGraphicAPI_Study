@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		7805E73823FEED9400C58E62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7805E73723FEED9400C58E62 /* AppDelegate.m */; };
-		7805E73B23FEED9400C58E62 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7805E73A23FEED9400C58E62 /* ViewController.m */; };
+		7805E73B23FEED9400C58E62 /* AAPLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7805E73A23FEED9400C58E62 /* AAPLViewController.m */; };
 		7805E73D23FEED9900C58E62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7805E73C23FEED9900C58E62 /* Assets.xcassets */; };
 		7805E74023FEED9900C58E62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7805E73E23FEED9900C58E62 /* Main.storyboard */; };
 		7805E74323FEED9900C58E62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7805E74223FEED9900C58E62 /* main.m */; };
 		7805E74E23FEED9900C58E62 /* RenderingPipelineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7805E74D23FEED9900C58E62 /* RenderingPipelineTests.m */; };
+		7805E75B240211F600C58E62 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7805E75A240211F600C58E62 /* Metal.framework */; };
+		7805E75F2402136D00C58E62 /* AAPLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7805E75E2402136D00C58E62 /* AAPLRenderer.m */; };
+		7805E76224021C2D00C58E62 /* AAPLShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 7805E76124021C2D00C58E62 /* AAPLShaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +32,8 @@
 		7805E73323FEED9400C58E62 /* RenderingPipeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenderingPipeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7805E73623FEED9400C58E62 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7805E73723FEED9400C58E62 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7805E73923FEED9400C58E62 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7805E73A23FEED9400C58E62 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7805E73923FEED9400C58E62 /* AAPLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLViewController.h; sourceTree = "<group>"; };
+		7805E73A23FEED9400C58E62 /* AAPLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAPLViewController.m; sourceTree = "<group>"; };
 		7805E73C23FEED9900C58E62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7805E73F23FEED9900C58E62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7805E74123FEED9900C58E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +42,11 @@
 		7805E74923FEED9900C58E62 /* RenderingPipelineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenderingPipelineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7805E74D23FEED9900C58E62 /* RenderingPipelineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RenderingPipelineTests.m; sourceTree = "<group>"; };
 		7805E74F23FEED9900C58E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7805E75A240211F600C58E62 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		7805E75D2402136D00C58E62 /* AAPLRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLRenderer.h; sourceTree = "<group>"; };
+		7805E75E2402136D00C58E62 /* AAPLRenderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAPLRenderer.m; sourceTree = "<group>"; };
+		7805E760240214E900C58E62 /* AAPLShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLShaderTypes.h; sourceTree = "<group>"; };
+		7805E76124021C2D00C58E62 /* AAPLShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AAPLShaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7805E75B240211F600C58E62 /* Metal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +74,7 @@
 				7805E73523FEED9400C58E62 /* RenderingPipeline */,
 				7805E74C23FEED9900C58E62 /* RenderingPipelineTests */,
 				7805E73423FEED9400C58E62 /* Products */,
+				7805E759240211F600C58E62 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,10 +90,11 @@
 		7805E73523FEED9400C58E62 /* RenderingPipeline */ = {
 			isa = PBXGroup;
 			children = (
+				7805E75C2402131900C58E62 /* Renderer */,
 				7805E73623FEED9400C58E62 /* AppDelegate.h */,
 				7805E73723FEED9400C58E62 /* AppDelegate.m */,
-				7805E73923FEED9400C58E62 /* ViewController.h */,
-				7805E73A23FEED9400C58E62 /* ViewController.m */,
+				7805E73923FEED9400C58E62 /* AAPLViewController.h */,
+				7805E73A23FEED9400C58E62 /* AAPLViewController.m */,
 				7805E73C23FEED9900C58E62 /* Assets.xcassets */,
 				7805E73E23FEED9900C58E62 /* Main.storyboard */,
 				7805E74123FEED9900C58E62 /* Info.plist */,
@@ -100,6 +111,25 @@
 				7805E74F23FEED9900C58E62 /* Info.plist */,
 			);
 			path = RenderingPipelineTests;
+			sourceTree = "<group>";
+		};
+		7805E759240211F600C58E62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7805E75A240211F600C58E62 /* Metal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7805E75C2402131900C58E62 /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				7805E75D2402136D00C58E62 /* AAPLRenderer.h */,
+				7805E75E2402136D00C58E62 /* AAPLRenderer.m */,
+				7805E760240214E900C58E62 /* AAPLShaderTypes.h */,
+				7805E76124021C2D00C58E62 /* AAPLShaders.metal */,
+			);
+			path = Renderer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,8 +231,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7805E73B23FEED9400C58E62 /* ViewController.m in Sources */,
+				7805E73B23FEED9400C58E62 /* AAPLViewController.m in Sources */,
 				7805E74323FEED9900C58E62 /* main.m in Sources */,
+				7805E75F2402136D00C58E62 /* AAPLRenderer.m in Sources */,
+				7805E76224021C2D00C58E62 /* AAPLShaders.metal in Sources */,
 				7805E73823FEED9400C58E62 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
