@@ -22,3 +22,10 @@ Metal will not understand an image with 24-bit BGR format so the pixels are conv
 Use a <b>MTLTextureDescriptor</b> object to configure properties like texture and pixel format<br>
 Call the <b>newTextureWithDescriptor:</b> method to create a texture
 ![MTLTextureDescriptor](./ImageWarehouse/MTLTextureDescriptor.png)<br>
+
+## Map the Texture Onto a Geometric Primitive
+Can't render a texture on its own, Must map it onto geometric primitives<br>
+Define mapping with texture coordinates: floating-point positions that map locations on a texture image to locations on the geometric surface.
+<br><br>
+For 2D textures, normalized texture coordinates are value from 0.0 to 1.0 in both x and y directions.
+![texelCoordinate](./ImageWarehouse/texelCoordinate.png)
