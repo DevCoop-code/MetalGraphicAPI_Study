@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78440130240C837900ED9A40 /* AAPLShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 7844012F240C837900ED9A40 /* AAPLShaders.metal */; };
 		78ADC24D24051D2800381F7E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 78ADC24C24051D2800381F7E /* AppDelegate.m */; };
 		78ADC25024051D2800381F7E /* AAPLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78ADC24F24051D2800381F7E /* AAPLViewController.m */; };
 		78ADC25224051D2E00381F7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78ADC25124051D2E00381F7E /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7844012F240C837900ED9A40 /* AAPLShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AAPLShaders.metal; sourceTree = "<group>"; };
 		78ADC24824051D2800381F7E /* TextureSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextureSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78ADC24B24051D2800381F7E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		78ADC24C24051D2800381F7E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				78ADC27324051DCB00381F7E /* AAPLImage.h */,
 				78ADC27424051DCB00381F7E /* AAPLImage.m */,
 				78ADC27624051DE800381F7E /* AAPLShaderTypes.h */,
+				7844012F240C837900ED9A40 /* AAPLShaders.metal */,
 			);
 			path = Render;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78440130240C837900ED9A40 /* AAPLShaders.metal in Sources */,
 				78ADC27524051DCB00381F7E /* AAPLImage.m in Sources */,
 				78ADC25024051D2800381F7E /* AAPLViewController.m in Sources */,
 				78ADC25824051D2E00381F7E /* main.m in Sources */,
