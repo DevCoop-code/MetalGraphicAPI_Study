@@ -16,6 +16,11 @@ class ViewController: UIViewController {
      */
     let captureSession = AVCaptureSession()
     
+    var metalDevice = MTLCreateSystemDefaultDevice()
+    
+    //Texture cache we will use for converting frame images to textures
+    var textureCache: CVMetalTextureCache?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -83,6 +88,15 @@ class ViewController: UIViewController {
          Start session
          */
         captureSession.commitConfiguration()
+        
+        //Initialize the Metal device object and MetalTexture
+        guard let metalDevice = metalDevice, CVMetalTextureCacheCreate(kCFAllocatorDefault, nil, metalDevice, nil, &textureCache) == kCVReturnSuccess
+            else {
+                // Handle an error, as failed to create texture cache
+                NSLog("Fail to create texture cache")
+                return
+        }
+        
         captureSession.startRunning()
     }
 
@@ -110,6 +124,24 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             //Handle an error. we failed to get image buffer
             NSLog("Fail to get image buffer")
+            return
+        }
+        
+        let width = CVPixelBufferGetWidth(imageBuffer)
+        let height = CVPixelBufferGetHeight(imageBuffer)
+        
+        var imageTexture: CVMetalTexture?
+        let result = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+                                                               textureCache!,
+                                                               imageBuffer,
+                                                               nil,
+                                                               .r8Unorm,
+                                                               width,
+                                                               height,
+                                                               0,
+                                                               &imageTexture)
+        
+        guard let unwrappedImageTexture = imageTexture, let texture = CVMetalTextureGetTexture(unwrappedImageTexture), result == kCVReturnSuccess else {
             return
         }
     }
