@@ -9,15 +9,15 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: UIViewController {
 
+    /*
+     Initialise session
+     */
+    let captureSession = AVCaptureSession()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        /*
-         Initialise session
-         */
-        let captureSession = AVCaptureSession()
         
         /*
          Request access to hardware
@@ -54,6 +54,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         guard captureSession.canAddInput(captureInput) else {
             //Handle an error, Failed to add an input device
             NSLog("Fail to add an input device")
+            captureSession.commitConfiguration()
             return
         }
         
@@ -65,7 +66,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let outputData = AVCaptureVideoDataOutput()
         
         //Setting the camera data format
-        outputData.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String :kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange]
+        outputData.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String : Int(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)]
         
         //Setting delegate that is going to receive each and every video frame
         let captureSessionQueue = DispatchQueue(label: "CameraSessionQueue", attributes: [])
@@ -87,7 +88,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
     //Get a AVCaptureDevice instance representing the camera
     func device(mediaType: AVMediaType, position: AVCaptureDevice.Position) -> AVCaptureDevice? {
-        guard let devices = AVCaptureDevice.DiscoverySession.init(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: mediaType, position: position).devices as? [AVCaptureDevice] else
+        guard let devices = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInDualCamera, .builtInWideAngleCamera], mediaType: mediaType, position: .unspecified).devices as? [AVCaptureDevice] else
         {
             return nil;
         }
@@ -98,11 +99,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         return nil
     }
-    
+}
+
+extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate
+{
     //AVCaptureVideoDataOutputSampleBufferDelegate method
     //output callback that will be called for every frame, passing tthe frame data in a CMSampleBuffer
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        NSLog("captureOutput")
+        NSLog("capture output")
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            //Handle an error. we failed to get image buffer
+            NSLog("Fail to get image buffer")
+            return
+        }
     }
 }
-
