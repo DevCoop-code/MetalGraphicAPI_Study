@@ -10,3 +10,7 @@
 - **Add input to session** : Input is a *AVCaptureDeviceInput* instance initialised with *AVCaptureDevice*
 - **Add output to session** : *AVCaptureVideoDataOutput* instance that need to configure with the format you wantt your data in
 - **Start the session** : Data will be streaming
+
+## Get frame data
+- **CMSampleBuffer** : A Core Foundation object representing a generic container for media data
+- **CVImageBuffer** : CVImageBuffer being a more specific container for image data
