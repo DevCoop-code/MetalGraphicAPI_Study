@@ -14,6 +14,8 @@
 		78A1AF17242D643300288D9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A1AF16242D643300288D9F /* Assets.xcassets */; };
 		78A1AF1A242D643300288D9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78A1AF18242D643300288D9F /* LaunchScreen.storyboard */; };
 		78A1AF25242D643400288D9F /* MetalCamera_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A1AF24242D643400288D9F /* MetalCamera_SwiftTests.swift */; };
+		78D95696243CA238007946C0 /* PreviewMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D95695243CA238007946C0 /* PreviewMetalView.swift */; };
+		78D95699243D8037007946C0 /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 78D95698243D8037007946C0 /* PassThrough.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		78A1AF20242D643400288D9F /* MetalCamera_SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetalCamera_SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A1AF24242D643400288D9F /* MetalCamera_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalCamera_SwiftTests.swift; sourceTree = "<group>"; };
 		78A1AF26242D643400288D9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78D95695243CA238007946C0 /* PreviewMetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMetalView.swift; sourceTree = "<group>"; };
+		78D95698243D8037007946C0 /* PassThrough.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 		78A1AF0C242D642D00288D9F /* MetalCamera_Swift */ = {
 			isa = PBXGroup;
 			children = (
+				78D95697243D8023007946C0 /* Shaders */,
+				78D95694243CA1E6007946C0 /* View */,
 				78A1AF0D242D642D00288D9F /* AppDelegate.swift */,
 				78A1AF0F242D642D00288D9F /* SceneDelegate.swift */,
 				78A1AF11242D642D00288D9F /* ViewController.swift */,
@@ -97,6 +103,22 @@
 				78A1AF26242D643400288D9F /* Info.plist */,
 			);
 			path = MetalCamera_SwiftTests;
+			sourceTree = "<group>";
+		};
+		78D95694243CA1E6007946C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				78D95695243CA238007946C0 /* PreviewMetalView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		78D95697243D8023007946C0 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				78D95698243D8037007946C0 /* PassThrough.metal */,
+			);
+			path = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +223,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A1AF12242D642D00288D9F /* ViewController.swift in Sources */,
+				78D95696243CA238007946C0 /* PreviewMetalView.swift in Sources */,
 				78A1AF0E242D642D00288D9F /* AppDelegate.swift in Sources */,
+				78D95699243D8037007946C0 /* PassThrough.metal in Sources */,
 				78A1AF10242D642D00288D9F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
