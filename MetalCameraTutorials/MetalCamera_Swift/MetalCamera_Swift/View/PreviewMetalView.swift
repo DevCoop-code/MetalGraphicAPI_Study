@@ -173,6 +173,8 @@ class PreviewMetalView: MTKView
     {
         var pixelBuffer: CVPixelBuffer?
         
+        pixelBuffer = internalPixelBuffer
+        
         guard let drawable = currentDrawable,
             let currentRenderPassDescriptor = currentRenderPassDescriptor,
             let previewPixelBuffer = pixelBuffer else {
